@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device--width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIS at VU Amsterdam - Find Your Fit (v4)</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNCEJ7YWDX"></script>
@@ -41,6 +41,12 @@
             text-align: center;
         }
         
+        .header img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
         .header h1 {
             font-size: 32px;
             margin-bottom: 10px;
@@ -282,14 +288,6 @@
             margin-bottom: 15px;
         }
         
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
         .btn-secondary {
             background: white;
             color: #0077B3;
@@ -301,8 +299,8 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s;
-            display: inline-block; /* Added for single button */
-            margin-top: 20px; /* Added for single button */
+            display: inline-block;
+            margin-top: 20px;
         }
         
         .btn-secondary:hover {
@@ -322,6 +320,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="VU-logo-RGB.jpg" alt="Vrije Universiteit Amsterdam Logo">
             <h1>History and International Studies</h1>
             <p>VU Amsterdam</p>
         </div>
@@ -617,7 +616,7 @@
             html += `<h4>Learn in a close-knit community</h4>
                      <p>You'll learn in <strong>small seminars of 15-20 students</strong>, not anonymous lecture halls. This approach combines the personal attention of a liberal arts college with the resources of a major research university. Our international faculty will know you by name, mentor you directly, and help you develop your own analytical voice. ${communityPersonalization}</p>`;
 
-            // 2. Global Perspective -- CORRECTED BLOCK
+            // 2. Global Perspective
             let academicRecs = [];
             const academicInterests = answers.q3 || {};
             if(academicInterests.latin_america === 'high') academicRecs.push({ name: 'Latin America in Modern History', interest: 'Latin America'});
@@ -655,7 +654,7 @@
             html += `<h4>Become an engaged historian</h4>
                      <p>At VU Amsterdam, we believe history is a crucial tool for understanding the present. Our goal is to train you to become an <strong>"engaged historian"</strong>—someone who thinks independently and contributes responsibly to society. This is woven into our courses, our methods, and practical experiences like internships. ${engagementPersonalization}</p>`;
 
-            // 4. Forge Your Own Path -- CORRECTED BLOCK
+            // 4. Forge Your Own Path
             let pathPersonalization = '';
             const skillInterestsPath = answers.q4 || {};
             
@@ -669,13 +668,13 @@
                 pathPersonalization = `<p>This flexibility is a huge advantage for your career goals. Your strong interest in an <strong>internship</strong> means you can use your third-year minor space to gain direct professional experience ${careerText}, building a portfolio that will make you stand out to employers.</p>`;
             }
 
-            html += `<h4>Forge your own Path</h4>
+            html += `<h4>Forge your own path</h4>
                      <p>The programme gives you significant freedom to follow your curiosity. This culminates in the third year, where you have the flexibility to <strong>study abroad</strong>, complete an <strong>internship</strong>, and—most importantly—choose your <strong>BA thesis topic freely</strong>.</p>
                      ${pathPersonalization}`;
 
             html += `</div>`;
             
-            // --- Final CTA Box --- MODIFIED BLOCK
+            // --- Final CTA Box ---
              html += `
                 <div class="cta-box">
                     <h3>Ready for the Next Step?</h3>
