@@ -446,11 +446,11 @@
                     title: "How interested are you in pursuing a career in the following fields?",
                     subtitle: "Rate your interest in each field.",
                     options: [
-                        { id: 'ngo', text: 'International Organizations (e.g., UN, NGOs)' },
-                        { id: 'journalism', text: 'Journalism and Media' },
-                        { id: 'museum', text: 'Museums and Cultural Heritage' },
-                        { id: 'government', text: 'Government or Policy Work' },
-                        { id: 'academia', text: 'Academic Research and University Teaching' }
+                        { id: 'ngo', text: 'International organizations (e.g., UN, NGOs)' },
+                        { id: 'journalism', text: 'Journalism and media' },
+                        { id: 'museum', text: 'Museums and cultural heritage' },
+                        { id: 'government', text: 'Government or policy work' },
+                        { id: 'academia', text: 'Academic research and teaching' }
                     ]
                 },
                 {
@@ -612,7 +612,7 @@
             if (userPath === 'pathA' && answers.q2a && answers.q2a.culture === 'high') {
                 communityPersonalization = "For a student like you, moving to a new city, this close-knit and diverse community is the ideal environment to connect with peers and professors from day one.";
             }
-            html += `<h4>Learn in a Close-Knit Community</h4>
+            html += `<h4>Learn in a close-knit community</h4>
                      <p>You'll learn in <strong>small seminars of 15-20 students</strong>, not anonymous lecture halls. This approach combines the personal attention of a liberal arts college with the resources of a major research university. Our international faculty will know you by name, mentor you directly, and help you develop your own analytical voice. ${communityPersonalization}</p>`;
 
             // 2. Global Perspective -- CORRECTED BLOCK
@@ -626,7 +626,7 @@
             if(academicInterests.antiquity === 'high') academicRecs.push({ name: 'specialized ACASA courses on antiquity', interest: 'Ancient Empires'});
             if(academicInterests.capitalism === 'high') academicRecs.push({ name: 'Capitalism & Inequality', interest: 'Global Inequality'});
             
-            html += `<h4>Develop a Truly Global Perspective</h4>
+            html += `<h4>Develop a truly global perspective</h4>
                      <p>The HIS track is designed to move beyond Eurocentric perspectives. The curriculum examines the history of all world regions through their connections, offering long-term perspectives on today’s most urgent challenges.</p>`;
 
             if (academicRecs.length > 0) {
@@ -650,7 +650,7 @@
                 let courseText = courses.length > 0 ? `in courses like ${courses.join(' and ')}` : '';
                 engagementPersonalization = `This philosophy aligns perfectly with your interests. You'll engage with today's most urgent issues ${courseText}. An <strong>internship at an NGO or media outlet</strong> is a perfect way to apply these skills directly.`;
             }
-            html += `<h4>Become an Engaged Historian</h4>
+            html += `<h4>Become an engaged historian</h4>
                      <p>At VU Amsterdam, we believe history is a crucial tool for understanding the present. Our goal is to train you to become an <strong>"engaged historian"</strong>—someone who thinks independently and contributes responsibly to society. This is woven into our courses, our methods, and practical experiences like internships. ${engagementPersonalization}</p>`;
 
             // 4. Forge Your Own Path -- CORRECTED BLOCK
@@ -667,7 +667,7 @@
                 pathPersonalization = `<p>This flexibility is a huge advantage for your career goals. Your strong interest in an <strong>internship</strong> means you can use your third-year minor space to gain direct professional experience ${careerText}, building a portfolio that will make you stand out to employers.</p>`;
             }
 
-            html += `<h4>Forge Your Own Path</h4>
+            html += `<h4>Forge your own Path</h4>
                      <p>The programme gives you significant freedom to follow your curiosity. This culminates in the third year, where you have the flexibility to <strong>study abroad</strong>, complete an <strong>internship</strong>, and—most importantly—choose your <strong>BA thesis topic freely</strong>.</p>
                      ${pathPersonalization}`;
 
@@ -691,3 +691,4 @@
     </script>
 </body>
 </html>
+
