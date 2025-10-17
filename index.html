@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device--width, initial-scale=1.0">
     <title>HIS at VU Amsterdam - Find Your Fit (v4)</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNCEJ7YWDX"></script>
@@ -301,6 +301,8 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s;
+            display: inline-block; /* Added for single button */
+            margin-top: 20px; /* Added for single button */
         }
         
         .btn-secondary:hover {
@@ -673,16 +675,12 @@
 
             html += `</div>`;
             
-            // --- Final CTA Box ---
+            // --- Final CTA Box --- MODIFIED BLOCK
              html += `
                 <div class="cta-box">
-                    <h3>Ready to Explore Further?</h3>
-                    <p style="margin-bottom: 20px;">Take the next step toward studying History and International Studies at VU Amsterdam.</p>
-                    <div class="cta-buttons">
-                        <a href="https://vu.nl/en/education/bachelor/history-and-international-studies" target="_blank" class="btn-secondary">View Full Program</a>
-                        <a href="#" onclick="alert('This would typically open a contact form or booking calendar.')" class="btn-secondary">Schedule a Call</a>
-                        <a href="#" onclick="alert('This would typically ask for your email to send a PDF.')" class="btn-secondary">Get Info Pack</a>
-                    </div>
+                    <h3>Ready for the Next Step?</h3>
+                    <p style="margin-bottom: 20px;">Explore the official programme page to learn more about the curriculum, admission requirements, and student life at VU Amsterdam.</p>
+                    <a href="https://vu.nl/en/education/bachelor/history-and-international-studies" target="_blank" class="btn-secondary">Explore the Programme Website</a>
                 </div>`;
 
             return html;
@@ -691,4 +689,3 @@
     </script>
 </body>
 </html>
-
