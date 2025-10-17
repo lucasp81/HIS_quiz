@@ -224,10 +224,20 @@
             margin-bottom: 10px;
         }
 
-        .results-section p {
+        .results-section p, .results-section li {
             color: #334155;
             font-size: 17px;
             margin-bottom: 25px;
+        }
+
+        #results-container ul {
+            list-style-position: inside;
+            margin-left: 5px;
+            margin-bottom: 25px;
+        }
+
+        #results-container li {
+            margin-bottom: 10px;
         }
 
         .special-note {
@@ -575,7 +585,7 @@
             html += `<h4>Learn in a Close-Knit Community</h4>
                      <p>You'll learn in <strong>small seminars of 15-20 students</strong>, not anonymous lecture halls. This approach combines the personal attention of a liberal arts college with the resources of a major research university. Our international faculty will know you by name, mentor you directly, and help you develop your own analytical voice. ${communityPersonalization}</p>`;
 
-            // 2. Global Perspective
+            // 2. Global Perspective -- CHANGED BLOCK
             let academicRecs = [];
             const academicInterests = answers.q3 || {};
             if(academicInterests.latin_america === 'high') academicRecs.push({ name: 'Latin America in Modern History', interest: 'Latin America'});
@@ -586,18 +596,16 @@
             if(academicInterests.antiquity === 'high') academicRecs.push({ name: 'specialized ACASA courses on antiquity', interest: 'Ancient Empires'});
             if(academicInterests.capitalism === 'high') academicRecs.push({ name: 'Capitalism & Inequality', interest: 'Global Inequality'});
             
-            // This is the main descriptive paragraph, now kept clean.
             html += `<h4>Develop a Truly Global Perspective</h4>
                      <p>The HIS track is designed to move beyond Eurocentric perspectives. The curriculum examines the history of all world regions through their connections, offering long-term perspectives on today’s most urgent challenges.</p>`;
 
-            // This block now generates a separate section with bullet points if there are matches.
             if (academicRecs.length > 0) {
                 const listItems = academicRecs.map(r => `<li>Your interest in <strong>${r.interest}</strong> connects perfectly with our specialized course on <strong>'${r.name}'</strong>.</li>`).join('');
                 html += `<div style="margin-top: -15px;">
                             <p>Based on your interests, here are some second-year courses where you can specialize:</p>
                             <ul>${listItems}</ul>
                          </div>`;
-            };
+            }
 
             // 3. Engaged Historian
             let engagementPersonalization = '';
@@ -615,27 +623,26 @@
             html += `<h4>Become an Engaged Historian</h4>
                      <p>At VU Amsterdam, we believe history is a crucial tool for understanding the present. Our goal is to train you to become an <strong>"engaged historian"</strong>—someone who thinks independently and contributes responsibly to society. This is woven into our courses, our methods, and practical experiences like internships. ${engagementPersonalization}</p>`;
 
-            // 4. Forge Your Own Path
+            // 4. Forge Your Own Path -- CHANGED BLOCK
             let pathPersonalization = '';
-            const skillInterests = answers.q4 || {};
+            const skillInterestsPath = answers.q4 || {};
             
-            // This logic is now cleaner and avoids repetition
-            if (skillInterests.research === 'high') {
+            if (skillInterestsPath.research === 'high') {
                 pathPersonalization = `<p>Your passion for independent research makes this freedom especially valuable. The ability to freely choose your BA thesis topic means you can dive deep into a subject you truly care about, making your final project a true capstone of your academic journey.</p>`;
-            } else if (skillInterests.internship === 'high') {
-                const careerInterests = answers.q5 || {};
+            } else if (skillInterestsPath.internship === 'high') {
+                const careerInterestsPath = answers.q5 || {};
                 let careerText = '';
-                if(careerInterests.museum === 'high') careerText = 'in the museum and heritage sector';
-                if(careerInterests.ngo === 'high') careerText = 'at an international NGO';
+                if(careerInterestsPath.museum === 'high') careerText = 'in the museum and heritage sector';
+                if(careerInterestsPath.ngo === 'high') careerText = 'at an international NGO';
                 pathPersonalization = `<p>This flexibility is a huge advantage for your career goals. Your strong interest in an <strong>internship</strong> means you can use your third-year minor space to gain direct professional experience ${careerText}, building a portfolio that will make you stand out to employers.</p>`;
             }
 
-            // The main paragraph and the personalization are now separate for better structure
             html += `<h4>Forge Your Own Path</h4>
                      <p>The programme gives you significant freedom to follow your curiosity. This culminates in the third year, where you have the flexibility to <strong>study abroad</strong>, complete an <strong>internship</strong>, and—most importantly—choose your <strong>BA thesis topic freely</strong>.</p>
                      ${pathPersonalization}`;
-            
 
+            html += `</div>`;
+            
             // --- Final CTA Box ---
              html += `
                 <div class="cta-box">
@@ -654,5 +661,3 @@
     </script>
 </body>
 </html>
-
-
