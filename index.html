@@ -615,20 +615,25 @@
             html += `<h4>Become an Engaged Historian</h4>
                      <p>At VU Amsterdam, we believe history is a crucial tool for understanding the present. Our goal is to train you to become an <strong>"engaged historian"</strong>—someone who thinks independently and contributes responsibly to society. This is woven into our courses, our methods, and practical experiences like internships. ${engagementPersonalization}</p>`;
 
-            // 4. Forge Your Path
+            // 4. Forge Your Own Path
             let pathPersonalization = '';
+            const skillInterests = answers.q4 || {};
+            
+            // This logic is now cleaner and avoids repetition
             if (skillInterests.research === 'high') {
-                pathPersonalization = "For you, with your passion for independent research, this flexibility is essential. You can tailor your electives, pursue a unique topic, and—most importantly—propose and execute a <strong>BA thesis</strong> on almost any subject you are passionate about, ensuring your education is truly your own.";
+                pathPersonalization = `<p>Your passion for independent research makes this freedom especially valuable. The ability to freely choose your BA thesis topic means you can dive deep into a subject you truly care about, making your final project a true capstone of your academic journey.</p>`;
             } else if (skillInterests.internship === 'high') {
+                const careerInterests = answers.q5 || {};
                 let careerText = '';
                 if(careerInterests.museum === 'high') careerText = 'in the museum and heritage sector';
                 if(careerInterests.ngo === 'high') careerText = 'at an international NGO';
-                pathPersonalization = `For your career goals, this flexibility is your advantage. The strong interest you have in doing an <strong>internship</strong> means you can use your third-year minor space to gain direct professional experience ${careerText}, building a portfolio that will make you stand out to employers.`;
+                pathPersonalization = `<p>This flexibility is a huge advantage for your career goals. Your strong interest in an <strong>internship</strong> means you can use your third-year minor space to gain direct professional experience ${careerText}, building a portfolio that will make you stand out to employers.</p>`;
             }
-            html += `<h4>Forge Your Own Path</h4>
-                     <p>The programme gives you significant freedom to follow your curiosity. This culminates in the third year, where you have the flexibility to <strong>study abroad</strong>, complete an <strong>internship</strong>, and—most importantly—choose your <strong>BA thesis topic freely</strong>. ${pathPersonalization}</p>`;
 
-            html += `</div>`;
+            // The main paragraph and the personalization are now separate for better structure
+            html += `<h4>Forge Your Own Path</h4>
+                     <p>The programme gives you significant freedom to follow your curiosity. This culminates in the third year, where you have the flexibility to <strong>study abroad</strong>, complete an <strong>internship</strong>, and—most importantly—choose your <strong>BA thesis topic freely</strong>.</p>
+                     ${pathPersonalization}`;
             
 
             // --- Final CTA Box ---
@@ -649,4 +654,5 @@
     </script>
 </body>
 </html>
+
 
