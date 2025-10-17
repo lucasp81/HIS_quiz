@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIS at VU Amsterdam - Find Your Fit (v4)</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNCEJ7YWDX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-SNCEJ7YWDX');
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -458,6 +468,9 @@
         let questionFlow = [];
 
         function startSurvey() {
+            // GA Event: Track when the quiz starts
+            gtag('event', 'quiz_start', { 'quiz_name': 'HIS' });
+            
             document.getElementById('intro-screen').classList.remove('active');
             document.getElementById('question-screen').classList.add('active');
             questionFlow = [questions.triage];
@@ -507,6 +520,12 @@
         }
 
         function selectPath(path) {
+            // GA Event: Track which path was selected
+            gtag('event', 'quiz_path_selected', {
+                'quiz_name': 'HIS',
+                'path_chosen': path
+            });
+
             userPath = path;
             answers.triage = path;
             document.querySelectorAll('.path-btn').forEach(btn => btn.classList.remove('selected'));
@@ -516,6 +535,14 @@
         }
 
         function answerTernary(questionId, optionId, value, event) {
+            // GA Event: Track each individual answer
+            gtag('event', 'quiz_answer', {
+                'quiz_name': 'HIS',
+                'question_id': questionId,
+                'option_id': optionId,
+                'answer_value': value
+            });
+            
             const buttons = event.target.parentElement.querySelectorAll('.ternary-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -542,6 +569,9 @@
         }
 
         function showResults() {
+            // GA Event: Track when the quiz is completed
+            gtag('event', 'quiz_complete', { 'quiz_name': 'HIS' });
+            
             document.getElementById('question-screen').classList.remove('active');
             document.getElementById('results-screen').classList.add('active');
             const resultsHTML = generateResultsHTML();
@@ -585,7 +615,7 @@
             html += `<h4>Learn in a Close-Knit Community</h4>
                      <p>You'll learn in <strong>small seminars of 15-20 students</strong>, not anonymous lecture halls. This approach combines the personal attention of a liberal arts college with the resources of a major research university. Our international faculty will know you by name, mentor you directly, and help you develop your own analytical voice. ${communityPersonalization}</p>`;
 
-            // 2. Global Perspective -- CHANGED BLOCK
+            // 2. Global Perspective -- CORRECTED BLOCK
             let academicRecs = [];
             const academicInterests = answers.q3 || {};
             if(academicInterests.latin_america === 'high') academicRecs.push({ name: 'Latin America in Modern History', interest: 'Latin America'});
@@ -623,7 +653,7 @@
             html += `<h4>Become an Engaged Historian</h4>
                      <p>At VU Amsterdam, we believe history is a crucial tool for understanding the present. Our goal is to train you to become an <strong>"engaged historian"</strong>—someone who thinks independently and contributes responsibly to society. This is woven into our courses, our methods, and practical experiences like internships. ${engagementPersonalization}</p>`;
 
-            // 4. Forge Your Own Path -- CHANGED BLOCK
+            // 4. Forge Your Own Path -- CORRECTED BLOCK
             let pathPersonalization = '';
             const skillInterestsPath = answers.q4 || {};
             
